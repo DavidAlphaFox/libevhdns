@@ -15,7 +15,7 @@ SHELL = @SHELL@
 top_builddir = @top_builddir@
 INSTALL = @INSTALL@
 
-RELEASE = 1.4.33
+RELEASE = 1.4.13
 SOURCES = evutil.c log.c evdns.c
 
 .PHONY: clean distclean install all
