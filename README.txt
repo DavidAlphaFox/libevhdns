@@ -1,4 +1,4 @@
-README of libevhdns: libevdns implementation compatible with libevent 
+README of libevhdns: libevdns implementation compatible with libev
 by pts@fazekas.hu at Sat Apr 24 21:56:35 CEST 2010
 
 About
