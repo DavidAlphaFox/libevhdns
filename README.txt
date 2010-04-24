@@ -24,6 +24,12 @@ License
 Since libevent source files are covered by BSD-like licenses, libevhdns is
 covered by the New BSD License.
 
+Version number
+~~~~~~~~~~~~~~
+The version number is defined in the Makefile.in file in the RELEASE
+variable. It's the same as version of the libevent the source files have
+been copied from.
+
 Which files are from libevent
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The following files in the source tree libevhdns have been copied verbatim
