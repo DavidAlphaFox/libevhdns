@@ -1,0 +1,43 @@
+#
+# Makefile.in for libevhdns
+# @configure_input@
+# by pts@fazekas.hu at Sat Apr 24 21:17:36 CEST 2010
+#
+
+LIBS = @LIBS@
+CC = @CC@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+libdir = @libdir@
+CFLAGS = @CFLAGS@
+LIBTOOL = @LIBTOOL@
+SHELL = @SHELL@
+top_builddir = @top_builddir@
+INSTALL = @INSTALL@
+
+RELEASE = 1.4.33
+SOURCES = evutil.c log.c evdns.c
+
+.PHONY: clean distclean install all
+
+all: libevhdns.la
+
+libevhdns.la: evhdns.lo
+	$(LIBTOOL) --mode=link $(CC) -release $(RELEASE) -o libevhdns.la evhdns.lo -rpath $(libdir) $(LIBS)
+
+evhdns.c:   $(SOURCES)
+	cat $(SOURCES) >evhdns.c
+
+evhdns.lo: evhdns.c
+	$(LIBTOOL) --mode=compile $(CC) -I. -DHAVE_CONFIG_H $(CFLAGS) -c evhdns.c
+
+install: libevhdns.la
+	$(LIBTOOL) --mode=install $(INSTALL) libevhdns.la $(libdir)/libevhdns.la
+
+clean:
+	rm -rf *.la *.lo *.o .libs
+
+distclean: clean
+	rm -f config.h Makefile test/Makefile sample/Makefile stamp-h1
+	rm -f config.log config.status
+
