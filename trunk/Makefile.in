@@ -17,6 +17,7 @@ INSTALL = @INSTALL@
 
 RELEASE = 1.4.13
 SOURCES = evutil.c log.c evdns.c
+HEADERS = config.h evdns.h event-internal.h event.h evutil.h log.h
 
 .PHONY: clean distclean install all
 
@@ -28,7 +29,7 @@ libevhdns.la: evhdns.lo
 evhdns.c:   $(SOURCES)
 	cat $(SOURCES) >evhdns.c
 
-evhdns.lo: evhdns.c
+evhdns.lo: evhdns.c $(HEADERS)
 	$(LIBTOOL) --mode=compile $(CC) -I. -DHAVE_CONFIG_H $(CFLAGS) -c evhdns.c
 
 install: libevhdns.la
