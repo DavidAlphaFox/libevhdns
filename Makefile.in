@@ -15,11 +15,11 @@ SHELL = @SHELL@
 top_builddir = @top_builddir@
 INSTALL = @INSTALL@
 
-RELEASE = 1.4.13
+RELEASE = 1.4.13.2
 SOURCES = evutil.c log.c evdns.c
 HEADERS = config.h evdns.h event-internal.h event.h evutil.h log.h
 
-.PHONY: clean distclean install all
+.PHONY: clean distclean install pruduct-and-version all
 
 all: libevhdns.la
 
@@ -43,3 +43,5 @@ distclean: clean
 	rm -f config.h Makefile test/Makefile sample/Makefile stamp-h1
 	rm -f config.log config.status
 
+product-and-version:
+	@echo libevhdns-$(RELEASE)
