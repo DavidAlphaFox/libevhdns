@@ -42,6 +42,7 @@ from libevent-1.4.13.
   evdns.c
   evdns.h
   event.c
+  evutil.h
   evutil.c
   install-sh
   libtool
