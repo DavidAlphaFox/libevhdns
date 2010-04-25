@@ -25,7 +25,7 @@ HEADERS = config.h event-config.h evdns.h event-internal.h event.h evutil.h log.
 all: libevhdns.la
 
 libevhdns.la: evhdns.lo
-	$(LIBTOOL) --mode=link $(CC) -release $(RELEASE) -o libevhdns.la evhdns.lo -rpath $(libdir) $(LIBS)
+	$(LIBTOOL) --mode=link --tag=CC $(CC) -release $(RELEASE) -o libevhdns.la evhdns.lo -rpath $(libdir) $(LIBS)
 
 evhdns.c:   $(SOURCES)
 	cat $(SOURCES) >evhdns.c
@@ -45,7 +45,7 @@ event-config.h: config.h Makefile
 	echo "#endif" >> $@
 
 evhdns.lo: evhdns.c $(HEADERS) Makefile
-	$(LIBTOOL) --mode=compile $(CC) -I. -DHAVE_CONFIG_H $(CFLAGS) -c evhdns.c
+	$(LIBTOOL) --mode=compile --tag=CC $(CC) -I. -DHAVE_CONFIG_H $(CFLAGS) -c evhdns.c
 
 install: libevhdns.la
 	$(INSTALL) -d $(DESTDIR)$(libdir)
