@@ -48,7 +48,7 @@ evhdns.lo: evhdns.c $(HEADERS) Makefile
 	$(LIBTOOL) --mode=compile $(CC) -I. -DHAVE_CONFIG_H $(CFLAGS) -c evhdns.c
 
 install: libevhdns.la
-	$(INSTALL) -d $(libdir)
+	$(INSTALL) -d $(DESTDIR)$(libdir)
 	$(LIBTOOL) --mode=install $(INSTALL) libevhdns.la $(DESTDIR)$(libdir)/libevhdns.la
 	-ldconfig
 
