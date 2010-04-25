@@ -29,14 +29,15 @@ libevhdns.la: evhdns.lo
 evhdns.c:   $(SOURCES)
 	cat $(SOURCES) >evhdns.c
 
-evhdns.lo: evhdns.c $(HEADERS)
+evhdns.lo: evhdns.c $(HEADERS) Makefile
 	$(LIBTOOL) --mode=compile $(CC) -I. -DHAVE_CONFIG_H $(CFLAGS) -c evhdns.c
 
 install: libevhdns.la
+	$(INSTALL) -d $(libdir)
 	$(LIBTOOL) --mode=install $(INSTALL) libevhdns.la $(libdir)/libevhdns.la
 
 clean:
-	rm -rf *.la *.lo *.o .libs
+	rm -rf *.la *.lo *.o .libs evhdns.c
 
 distclean: clean
 	rm -f config.h Makefile test/Makefile sample/Makefile stamp-h1
