@@ -49,6 +49,7 @@ evhdns.lo: evhdns.c $(HEADERS) Makefile
 install: libevhdns.la
 	$(INSTALL) -d $(libdir)
 	$(LIBTOOL) --mode=install $(INSTALL) libevhdns.la $(libdir)/libevhdns.la
+	-ldconfig
 
 clean:
 	rm -rf *.la *.lo *.o .libs evhdns.c

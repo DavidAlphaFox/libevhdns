@@ -17,7 +17,7 @@ Get the source code from http://code.google.com/p/libevhdns/ .
 
   $ ./configure
   $ make
-  $ make install
+  $ sudo make install
 
 License
 ~~~~~~~
