@@ -14,6 +14,7 @@ LIBTOOL = @LIBTOOL@
 SHELL = @SHELL@
 top_builddir = @top_builddir@
 INSTALL = @INSTALL@
+DESTDIR =  # DESTDIR is overridden by Gentoo Emake
 
 RELEASE = 1.4.13.3
 SOURCES = evutil.c log.c evdns.c
@@ -48,7 +49,7 @@ evhdns.lo: evhdns.c $(HEADERS) Makefile
 
 install: libevhdns.la
 	$(INSTALL) -d $(libdir)
-	$(LIBTOOL) --mode=install $(INSTALL) libevhdns.la $(libdir)/libevhdns.la
+	$(LIBTOOL) --mode=install $(INSTALL) libevhdns.la $(DESTDIR)$(libdir)/libevhdns.la
 	-ldconfig
 
 clean:
