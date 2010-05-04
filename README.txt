@@ -39,7 +39,7 @@ from libevent-1.4.13.
   config.h.in
   config.sub
   configure
-  evdns.c
+  evdns.c  (modified EV_READ and EV_WRITE)
   evdns.h
   event.c
   evutil.h

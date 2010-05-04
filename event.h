@@ -17,11 +17,9 @@ struct event {
   char dummy[160];  /* on i386: libev: 100 bytes, libevent: 72 bytes */
 };
 
-#define EV_TIMEOUT	0x01
-#define EV_READ		0x02
-#define EV_WRITE	0x04
-#define EV_SIGNAL	0x08
-#define EV_PERSIST	0x10
+/*#define EV_READ  0x02*/  /* for libev-3.9, EV_READ  is 0x01 */
+/*#define EV_WRITE 0x04*/  /* for libev-3.9, EV_WRITE is 0x02 */
+#define EV_PERSIST 0x10
 
 #define EVLIST_INIT	0x80
 
@@ -34,5 +32,8 @@ struct event {
 int event_add(struct event *ev, const struct timeval *timeout);
 int event_del(struct event *);
 void event_set(struct event *, int, short, void (*)(int, short, void *), void *);
+
+/* Returns "libev" iff libev is used. */
+const char *event_get_method(void);
 
 #endif

@@ -158,6 +158,16 @@ typedef unsigned int uint;
 
 #define CLASS_INET     EVDNS_CLASS_INET
 
+/**** pts ****/
+#ifdef EV_READ
+#undef EV_READ
+#endif
+#ifdef EV_WRITE
+#undef EV_WRITE
+#endif
+char EV_READ, EV_WRITE;  /* initialized in evdns_init */
+
+
 struct request {
 	u8 *request;  /* the dns packet data */
 	unsigned int request_len;
@@ -3002,6 +3012,16 @@ int
 evdns_init(void)
 {
 	int res = 0;
+
+        /**** pts ****/
+        if (0 == strcmp(event_get_method(), "libev")) {
+          EV_READ = 0x01;
+          EV_WRITE = 0x02;
+        } else {
+          EV_READ = 0x02;
+          EV_WRITE = 0x04;
+        }
+
 #ifdef WIN32
 	res = evdns_config_windows_nameservers();
 #else
