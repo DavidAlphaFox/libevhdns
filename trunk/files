@@ -13,7 +13,7 @@ evutil.c
 evutil.h
 files
 install-sh
-libtool
+ltmain.sh
 log.c
 log.h
 sample/Makefile.in
