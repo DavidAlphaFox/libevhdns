@@ -16,7 +16,7 @@ top_builddir = @top_builddir@
 INSTALL = @INSTALL@
 DESTDIR =  # DESTDIR is overridden by Gentoo Emake
 
-RELEASE = 1.4.13.3
+RELEASE = 1.4.13.4
 SOURCES = evutil.c log.c evdns.c
 HEADERS = config.h event-config.h evdns.h event-internal.h event.h evutil.h log.h
 
@@ -50,7 +50,7 @@ evhdns.lo: evhdns.c $(HEADERS) Makefile
 install: libevhdns.la
 	$(INSTALL) -d $(DESTDIR)$(libdir)
 	$(LIBTOOL) --mode=install $(INSTALL) libevhdns.la $(DESTDIR)$(libdir)/libevhdns.la
-	-ldconfig
+	-ldconfig  # Linux-only. Does no harm elsewhere.
 
 clean:
 	rm -rf *.la *.lo *.o .libs evhdns.c
