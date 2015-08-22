@@ -1,0 +1,3 @@
+libevhdns is a C library for Unix which implements the asynchronous DNS resolver evdns (the asynchronous DNS resolving feature of libevent) in a way which is compatible with both libev and libevent.
+
+libevhdns reuses parts of the libevent source code (including the full evdns.c) and libevent's configure script. The only extra merit of libevhdns as compared to libevent is that it works with libev as well.
